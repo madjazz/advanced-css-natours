@@ -1,0 +1,38 @@
+.header {
+  height: 85vh;
+  background-position: top;
+  position: relative;
+  @include background-gradient("../../img/hero-small.jpg");
+
+  @supports (clip-path: polygon(0 0)) {
+    height: 95vh;
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  }
+
+  @media only screen and (min-resolution: 192dpi) and (min-width: 37.5em),
+  only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em),
+  only screen and (min-width: 125em) {
+    @include background-gradient("../../img/hero.jpg");
+  }
+
+
+  @include respond(phone) {
+    clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+  }
+
+  &__logo-box {
+    position: absolute;
+    top: 4rem;
+    left: 4rem;
+  }
+
+  &__logo {
+    height: 3.5rem;
+  }
+
+  &__text-box {
+    @include center-element;
+    top: 40%;
+    text-align: center;
+  }
+}

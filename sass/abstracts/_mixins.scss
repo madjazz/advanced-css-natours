@@ -1,0 +1,53 @@
+@mixin clearfix {
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin background-gradient($img) {
+  background-image: linear-gradient(
+                  to right bottom,
+                  rgba($color-primary-light, 0.8),
+                  rgba($color-primary-dark, 0.8)
+  ),
+  url($img);
+  background-size: cover;
+}
+
+@mixin text-gradient {
+  background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+@mixin center-element {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin respond($breakpoint) {
+  @if $breakpoint == phone {
+    @media only screen and (max-width: 37.5em) {  // 600px
+      @content;
+    }
+  }
+  @else if $breakpoint == tab-port {
+    @media only screen and (max-width: 56.25em) {  // 900px
+      @content;
+    }
+  }
+  @else if $breakpoint == tab-land {
+    @media only screen and (max-width: 75em) {  // 1200px
+      @content;
+    }
+  }
+  @else {
+    @media only screen and (max-width: 112.5em) {  // 1800px
+      @content;
+    }
+  }
+}
